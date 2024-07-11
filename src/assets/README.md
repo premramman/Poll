@@ -1,0 +1,1 @@
+Put project assets like images in this directory

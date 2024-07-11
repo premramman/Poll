@@ -1,0 +1,1 @@
+Put different page layouts like home, main, login, 404 layouts in this directory
