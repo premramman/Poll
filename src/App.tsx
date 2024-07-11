@@ -1,20 +1,13 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-
-function ButtonUsage() {
-  return <Button variant="contained">Hello world</Button>;
-}
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
-
   return (
     <>
-      Hello World
-      <ButtonUsage></ButtonUsage>
+      <Link to={`login`}>login</Link>
+      <Link to={`/`}>home</Link>
+      <Outlet />
     </>
   )
 }
 
 export default App
-
-
