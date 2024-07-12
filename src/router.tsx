@@ -1,19 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-
-const Home = lazy(() => import("./pages/Home"));
-const Login = lazy(() => import("./pages/Login"));
 
 const routes = [{
   path: "/",
   element: <App />,
   children: [{
-    path: "/",
-    element: <Home />
+    index: true,
+    Component: lazy(() => import('./pages/Home')) 
   }, {
     path: "login",
-    element: <Login />
+    Component: lazy(() => import('./pages/Login')) 
   }]
 }];
 

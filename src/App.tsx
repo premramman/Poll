@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 function App() {
@@ -5,7 +6,9 @@ function App() {
     <>
       <Link to={`login`}>login</Link>
       <Link to={`/`}>home</Link>
-      <Outlet />
+      <Suspense fallback={<>loading</>}>
+        <Outlet />
+      </Suspense>
     </>
   )
 }
