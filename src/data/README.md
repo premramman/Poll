@@ -1,1 +1,1 @@
-Put data assets like json files in this directory
+Put data assets like global constants and json files in this directory
