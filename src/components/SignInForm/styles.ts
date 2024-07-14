@@ -1,16 +1,3 @@
-export const formBox = {
-    display: "flex",
-    flexDirection: "column",
-    gap: 5,
-    minWidth: 500
-};
-
-export const formTitleBox = {
-    display: "flex",
-    flexDirection: "column",
-    gap: 1
-};
-
 export const pwdBtnBox = {
     display: "flex",
     flexDirection: "row",

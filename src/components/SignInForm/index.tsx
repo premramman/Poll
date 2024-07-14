@@ -1,38 +1,18 @@
-import { Box, Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
-import { formBox, pwdBtnBox, formButtonBox, signInBtn, createAccountBtn, forgotPwdBtn, formTitleBox } from './styles';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useState } from 'react';
+import { Box, Button, TextField } from '@mui/material';
+import { pwdBtnBox, formButtonBox, signInBtn, createAccountBtn, forgotPwdBtn } from './styles';
 import GLOBALS from '../../data/constants/globals';
+import FormLayout from '../../layouts/FormLayout';
+import FormTitle from '../FormTitle';
+import PasswordField from '../PasswordField';
 
 function SignInForm() {
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-
     return (<>
-        <Box sx={formBox}>
-            <Box sx={formTitleBox}>
-                <Typography variant="h4">Sign in</Typography>
-                <Typography>to continue to {GLOBALS.APP.NAME}</Typography>
-            </Box>
-
+        <FormLayout>
+            <FormTitle title="Sign in" subTitle={`to continue to ${GLOBALS.APP.NAME}`} />
+            
             <TextField label="Email" name="email" />
-            <TextField label="Password" name="password"
-                type={showPassword ? 'text' : 'password'}
-                InputProps={{
-                    endAdornment:
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                edge="end"
-                            >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
-                }}
-            />
+
+            <PasswordField />
 
             <Box sx={pwdBtnBox}>
                 <Button variant="text" sx={forgotPwdBtn}>Forgot Password?</Button>
@@ -43,7 +23,7 @@ function SignInForm() {
                 <Button variant="contained" size="large" sx={signInBtn}>Sign in</Button>
             </Box>
 
-        </Box>
+        </FormLayout>
     </>)
 }
 
