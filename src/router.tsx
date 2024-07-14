@@ -7,10 +7,10 @@ const routes = [{
   element: <App />,
   children: [{
     index: true,
-    Component: lazy(() => import('./pages/Home')) 
+    Component: lazy(() => import('./pages/Home'))
   }, {
-    path: "login",
-    Component: lazy(() => import('./pages/Login')) 
+    path: "signin",
+    Component: lazy(() => import('./pages/SignIn'))
   }]
 }];
 
