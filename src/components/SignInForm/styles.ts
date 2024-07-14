@@ -1,9 +1,3 @@
-export const pwdBtnBox = {
-    display: "flex",
-    flexDirection: "row",
-    marginTop: -4
-};
-
 export const forgotPwdBtn = {
     paddingLeft: 0,
     '&:hover': {
