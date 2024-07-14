@@ -8,7 +8,8 @@ export const forgotPwdBtn = {
 export const formButtonBox = {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    gap: 1
 }
 
 export const createAccountBtn = {
