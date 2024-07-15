@@ -7,8 +7,13 @@ import PasswordField from '../PasswordField';
 import RelatedFieldLayout from '../../layouts/RelatedFieldLayout';
 import { ChangeEvent, useState } from 'react';
 import PasswordMeter from '../PasswordMeter';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpForm() {
+    const navigate = useNavigate();
+    const handleClickCreateAccount = () => navigate("/");
+    const handleClickSignIn = () => navigate("/signin");
+
     const [password, setPassword] = useState("");
     const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
@@ -24,8 +29,8 @@ function SignUpForm() {
             </RelatedFieldLayout>
 
             <Box sx={formButtonBox}>
-                <Button size="large">Already a member? Sign in</Button>
-                <Button variant="contained" size="large">Create</Button>
+                <Button size="large" onClick={handleClickSignIn}>Already a member? Sign in</Button>
+                <Button variant="contained" size="large" onClick={handleClickCreateAccount}>Create</Button>
             </Box>
 
         </FormLayout>

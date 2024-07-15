@@ -5,8 +5,13 @@ import FormLayout from '../../layouts/FormLayout';
 import FormTitle from '../FormTitle';
 import PasswordField from '../PasswordField';
 import RelatedFieldLayout from '../../layouts/RelatedFieldLayout';
+import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
+    const navigate = useNavigate();
+    const handleClickCreateAccount = () => navigate("/signup");
+    const handleClickSignIn = () => navigate("/");
+
     return (
         <FormLayout>
             <FormTitle title="Sign in" subTitle={`to continue to ${GLOBALS.APP.NAME}`} />
@@ -21,8 +26,8 @@ function SignInForm() {
             </RelatedFieldLayout>
 
             <Box sx={formButtonBox}>
-                <Button size="large" sx={createAccountBtn}>Create Account</Button>
-                <Button variant="contained" size="large" sx={signInBtn}>Sign in</Button>
+                <Button size="large" sx={createAccountBtn} onClick={handleClickCreateAccount}>Create Account</Button>
+                <Button variant="contained" size="large" sx={signInBtn} onClick={handleClickSignIn}>Sign in</Button>
             </Box>
 
         </FormLayout>

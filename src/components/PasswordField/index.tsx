@@ -4,7 +4,7 @@ import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 
 interface Props {
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 function PasswordField({ onChange }: Props) {
