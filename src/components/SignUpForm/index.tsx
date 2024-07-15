@@ -5,35 +5,67 @@ import FormLayout from '../../layouts/FormLayout';
 import FormTitle from '../FormTitle';
 import PasswordField from '../PasswordField';
 import RelatedFieldLayout from '../../layouts/RelatedFieldLayout';
-import { ChangeEvent, useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import PasswordMeter from '../PasswordMeter';
 import { useNavigate } from 'react-router-dom';
+import { object, string } from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+interface FormData {
+    email: string,
+    password: string
+}
 
 function SignUpForm() {
     const navigate = useNavigate();
-    const handleClickCreateAccount = () => navigate("/");
+
+    const schema = object({
+        email: string().label('Email').email().required(),
+        password: string().label('Password').required()
+    });
+
     const handleClickSignIn = () => navigate("/signin");
 
     const [password, setPassword] = useState("");
-    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+    const handlePasswordChange = (e: KeyboardEvent<HTMLInputElement>) => setPassword((e.target as HTMLInputElement).value);
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
+
+    const onSubmit = (data: FormData) => {
+        console.log(data);
+        navigate("/");
+    }
 
     return (
-        <FormLayout>
-            <FormTitle title="Create Account" subTitle={`sign up to become a ${GLOBALS.APP.NAME} family member`} />
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <FormLayout>
+                <FormTitle title="Create Account" subTitle={`sign up to become a ${GLOBALS.APP.NAME} family member`} />
 
-            <TextField label="Email" name="email" />
+                <TextField label="Email"
+                    {...register("email")}
+                    error={!!errors.email}
+                    helperText={errors.email?.message}
+                />
 
-            <RelatedFieldLayout>
-                <PasswordField onChange={handlePasswordChange} />
-                <PasswordMeter password={password} />
-            </RelatedFieldLayout>
+                <RelatedFieldLayout>
+                    <PasswordField
+                        register={register}
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
+                        onKeyUp={handlePasswordChange}
+                    />
+                    <PasswordMeter password={password} />
+                </RelatedFieldLayout>
 
-            <Box sx={formButtonBox}>
-                <Button size="large" onClick={handleClickSignIn}>Already a member? Sign in</Button>
-                <Button variant="contained" size="large" onClick={handleClickCreateAccount}>Create</Button>
-            </Box>
-
-        </FormLayout>
+                <Box sx={formButtonBox}>
+                    <Button size="large" onClick={handleClickSignIn}>Already a member? Sign in</Button>
+                    <Button variant="contained" size="large" type="submit">Create</Button>
+                </Box>
+            </FormLayout>
+        </form>
     )
 }
 

@@ -1,21 +1,27 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { KeyboardEvent, useState } from "react";
 
 interface Props {
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    register?: any,
+    error?: boolean,
+    helperText?: string | undefined,
+    onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
-function PasswordField({ onChange }: Props) {
+function PasswordField({ register, error, helperText, onKeyUp }: Props) {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     return (
-        <TextField label="Password" name="password"
+        <TextField label="Password"
             type={showPassword ? 'text' : 'password'}
-            onChange={onChange}
+            {...register("password")}
+            error={error}
+            helperText={helperText}
+            onKeyUp={onKeyUp}
             InputProps={{
                 endAdornment:
                     <InputAdornment position="end">
