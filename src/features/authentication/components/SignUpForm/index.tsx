@@ -11,8 +11,10 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./schema";
+import UsernameCheckField from '../../../../components/UsernameCheckField';
 
 interface FormData {
+    username: string,
     email: string,
     password: string
 }
@@ -38,6 +40,13 @@ function SignUpForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormLayout>
                 <FormTitle title="Create Account" subTitle={`sign up to become a ${GLOBALS.APP.NAME} family member`} />
+
+                <UsernameCheckField
+                    register={register}
+                    error={!!errors.username}
+                    helperText={errors.username?.message}
+                    isValid={true}
+                />
 
                 <TextField label="Email"
                     {...register("email")}
