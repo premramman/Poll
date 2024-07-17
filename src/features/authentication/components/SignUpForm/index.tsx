@@ -8,9 +8,9 @@ import RelatedFieldLayout from '../../../../layouts/RelatedFieldLayout';
 import { KeyboardEvent, useState } from 'react';
 import PasswordMeter from '../../../../components/PasswordMeter';
 import { useNavigate } from 'react-router-dom';
-import { object, string } from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "./schema";
 
 interface FormData {
     email: string,
@@ -19,11 +19,6 @@ interface FormData {
 
 function SignUpForm() {
     const navigate = useNavigate();
-
-    const schema = object({
-        email: string().label('Email').email().required(),
-        password: string().label('Password').required()
-    });
 
     const handleClickSignIn = () => navigate("/signin");
 
