@@ -1,5 +1,5 @@
 import Illustration from "../../components/Illustration";
-import SignUpForm from "../../components/SignUpForm";
+import SignUpForm from "../../features/authentication/components/SignUpForm";
 import SignInLayout from "../../layouts/SignInLayout";
 
 function SignUp() {

@@ -1,10 +1,10 @@
 import { Box, Button, TextField } from '@mui/material';
 import { formButtonBox, signInBtn, createAccountBtn, forgotPwdBtn } from './styles';
-import GLOBALS from '../../data/constants/globals';
-import FormLayout from '../../layouts/FormLayout';
-import FormTitle from '../FormTitle';
-import PasswordField from '../PasswordField';
-import RelatedFieldLayout from '../../layouts/RelatedFieldLayout';
+import GLOBALS from '../../../../data/constants/globals';
+import FormLayout from '../../../../layouts/FormLayout';
+import FormTitle from '../../../../components/FormTitle';
+import PasswordField from '../../../../components/PasswordField';
+import RelatedFieldLayout from '../../../../layouts/RelatedFieldLayout';
 import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {

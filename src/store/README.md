@@ -1,1 +1,0 @@
-Put redux store in this directory

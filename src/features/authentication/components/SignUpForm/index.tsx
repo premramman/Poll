@@ -1,12 +1,12 @@
 import { Box, Button, TextField } from '@mui/material';
 import { formButtonBox } from './styles';
-import GLOBALS from '../../data/constants/globals';
-import FormLayout from '../../layouts/FormLayout';
-import FormTitle from '../FormTitle';
-import PasswordField from '../PasswordField';
-import RelatedFieldLayout from '../../layouts/RelatedFieldLayout';
+import GLOBALS from '../../../../data/constants/globals';
+import FormLayout from '../../../../layouts/FormLayout';
+import FormTitle from '../../../../components/FormTitle';
+import PasswordField from '../../../../components/PasswordField';
+import RelatedFieldLayout from '../../../../layouts/RelatedFieldLayout';
 import { KeyboardEvent, useState } from 'react';
-import PasswordMeter from '../PasswordMeter';
+import PasswordMeter from '../../../../components/PasswordMeter';
 import { useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 import { useForm } from "react-hook-form";
