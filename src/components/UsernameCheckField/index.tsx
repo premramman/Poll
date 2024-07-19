@@ -1,31 +1,32 @@
 import CheckIcon from '@mui/icons-material/Check';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import { InputAdornment, TextField } from '@mui/material';
-import { KeyboardEvent } from "react";
+import { InputAdornment, TextField, TextFieldProps } from '@mui/material';
+import { forwardRef } from 'react';
 
-interface Props {
-    isValid: boolean,
-    register?: any,
-    error?: boolean,
-    helperText?: string | undefined,
-    onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void
+interface extendedProps {
+    isValid: boolean
 }
 
-function UsernameCheckField({ isValid, register, error, helperText, onKeyUp }: Props) {
+type UsernameCheckFieldProps = TextFieldProps & extendedProps;
+
+const cmp = function ({ isValid, ...props }: UsernameCheckFieldProps, ref) {
+    const adornment = (
+        <InputAdornment position="end">
+            {isValid ? <CheckIcon color="success" /> : <ErrorOutlineIcon color="warning" />}
+        </InputAdornment>
+    );
+
     return (
-        <TextField label="Username"
-            {...register("username")}
-            error={error}
-            helperText={helperText}
-            onKeyUp={onKeyUp}
+        <TextField
+            {...props}
+            ref={ref}
             InputProps={{
-                endAdornment:
-                    <InputAdornment position="end">
-                        {isValid ? <CheckIcon color="success"/> : <ErrorOutlineIcon color="warning"/>}
-                    </InputAdornment>
+                endAdornment: adornment
             }}
         />
     )
 }
+
+const UsernameCheckField = forwardRef(cmp);
 
 export default UsernameCheckField;

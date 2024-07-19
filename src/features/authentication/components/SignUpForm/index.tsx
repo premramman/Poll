@@ -41,8 +41,8 @@ function SignUpForm() {
             <FormLayout>
                 <FormTitle title="Create Account" subTitle={`sign up to become a ${GLOBALS.APP.NAME} family member`} />
 
-                <UsernameCheckField
-                    register={register}
+                <UsernameCheckField label="Username"
+                    {...register("username")}
                     error={!!errors.username}
                     helperText={errors.username?.message}
                     isValid={true}
@@ -55,12 +55,13 @@ function SignUpForm() {
                 />
 
                 <RelatedFieldLayout>
-                    <PasswordField
-                        register={register}
+                    <PasswordField label="Password"
+                        {...register("password")}
                         error={!!errors.password}
                         helperText={errors.password?.message}
                         onKeyUp={handlePasswordChange}
                     />
+
                     <PasswordMeter password={password} />
                 </RelatedFieldLayout>
 

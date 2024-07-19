@@ -1,41 +1,37 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { KeyboardEvent, useState } from "react";
+import { IconButton, InputAdornment, TextField, TextFieldProps } from "@mui/material";
+import { forwardRef, useState } from "react";
 
-interface Props {
-    register?: any,
-    error?: boolean,
-    helperText?: string | undefined,
-    onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void
-}
-
-function PasswordField({ register, error, helperText, onKeyUp }: Props) {
+const cmp = function (props: TextFieldProps, ref) {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+    const adornment = (
+        <InputAdornment position="end">
+            <IconButton
+                aria-label="Toggle password visibility"
+                onClick={handleClickShowPassword}
+                edge="end"
+            >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+        </InputAdornment>
+    );
+
     return (
-        <TextField label="Password"
+        <TextField
+            {...props}
+            ref={ref}
             type={showPassword ? 'text' : 'password'}
-            {...register("password")}
-            error={error}
-            helperText={helperText}
-            onKeyUp={onKeyUp}
             InputProps={{
-                endAdornment:
-                    <InputAdornment position="end">
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            edge="end"
-                        >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                    </InputAdornment>
+                endAdornment: adornment
             }}
         />
     )
 }
+
+const PasswordField = forwardRef(cmp);
 
 export default PasswordField;
