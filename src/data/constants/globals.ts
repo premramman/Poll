@@ -1,5 +1,5 @@
 const APP = {
-    NAME: "Poll",
+    NAME: "CeePoll",
     VERSION: "1.0",
     COPYRIGHT_AUTHOR: "Prem Ramman"
 }

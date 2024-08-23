@@ -1,5 +1,5 @@
 {
-  "name": "poll",
+  "name": "ceepoll",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,11 +14,12 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fontsource/ibm-plex-sans": "^5.0.21",
     "@fontsource/roboto": "^5.0.13",
     "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^5.16.0",
     "@mui/material": "^5.16.0",
-    "@reduxjs/toolkit": "^2.2.6",
+    "@reduxjs/toolkit": "^2.2.7",
     "@tanstack/react-query": "^5.51.1",
     "axios": "^1.7.2",
     "date-fns": "^3.6.0",

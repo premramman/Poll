@@ -2,8 +2,13 @@
 @import url('@fontsource/roboto/400.css');
 @import url('@fontsource/roboto/500.css');
 @import url('@fontsource/roboto/700.css');
+@import url('@fontsource/ibm-plex-sans/300.css');
+@import url('@fontsource/ibm-plex-sans/400.css');
+@import url('@fontsource/ibm-plex-sans/500.css');
+@import url('@fontsource/ibm-plex-sans/700.css');
 
 body {
     padding: 0px;
     margin: 0px;
+    background: #f8f8ff;
 }
