@@ -1,13 +1,13 @@
 import { Typography } from "@mui/material";
-import { format } from "date-fns";
 import GLOBALS from "../../data/constants/globals";
+import { getCurrentYear } from "../../utils/date";
 
 function Copyright() {
-    const year = format(new Date(), "yyyy");
+    const year = getCurrentYear();
     const copyrightText = `Copyright © ${year} ${GLOBALS.APP.COPYRIGHT_AUTHOR}. All Rights Reserved`;
 
     return (
-        <Typography variant="caption">{copyrightText}</Typography>
+        <Typography variant="caption" color="text.secondary">{copyrightText}</Typography>
     )
 }
 
