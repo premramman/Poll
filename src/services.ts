@@ -20,6 +20,7 @@ const baseQueryConfig = {
 const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery(baseQueryConfig),
+    tagTypes: ['Post'],
     endpoints: () => ({})
 })
 
